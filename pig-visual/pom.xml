@@ -33,5 +33,6 @@
         <module>pig-codegen</module>
         <module>pig-monitor</module>
         <module>pig-quartz</module>
+        <module>pig-flowable</module>
     </modules>
 </project>

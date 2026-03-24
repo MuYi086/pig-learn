@@ -1,0 +1,50 @@
+server:
+  port: 5003
+
+spring:
+  application:
+    name: @artifactId@
+  profiles:
+    active: @profiles.active@
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_HOST:pig-register}:${NACOS_PORT:8848}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
+        shared-configs:
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PWD:root}
+    url: jdbc:mysql://${MYSQL_HOST:pig-mysql}:${MYSQL_PORT:3306}/pig?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true&allowPublicKeyRetrieval=true
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 10
+
+# Flowable 配置
+flowable:
+  # 数据库更新策略
+  database-schema-update: true
+  # 异步执行器
+  async-executor-activate: true
+  # 历史记录级别
+  history-level: full
+  # 检查流程定义
+  check-process-definitions: false
+  # 邮件服务（可选）
+  mail-server-host: localhost
+  mail-server-port: 1025
+  # 身份服务
+  identity:
+    # 跳过 Spring Security 的身份验证
+    skip-authentication: false
+
+# 日志配置
+logging:
+  level:
+    org.flowable: debug
+    com.pig4cloud.pig.flowable: debug
