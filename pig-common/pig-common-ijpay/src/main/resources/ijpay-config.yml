@@ -1,0 +1,20 @@
+# 支付配置
+pay:
+  enabled: true
+  # 微信支付配置
+  wxpay:
+    - appId: wxappid123456
+      mchId: 1234567890
+      apiKey: your_api_key_here
+      certPath: /path/to/apiclient_cert.p12
+      notifyUrl: https://your-domain.com/pay/wx/callback
+      enabled: false
+  # 支付宝配置
+  alipay:
+    - appId: your_app_id
+      privateKey: your_private_key
+      alipayPublicKey: alipay_public_key
+      serverUrl: https://openapi.alipay.com/gateway.do
+      notifyUrl: https://your-domain.com/pay/ali/callback
+      returnUrl: https://your-domain.com/pay/ali/return
+      enabled: false

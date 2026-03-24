@@ -1,0 +1,24 @@
+# 微信配置
+wx:
+  # 公众号配置
+  mp:
+    configs:
+      - appId: wxappid123456
+        secret: your_secret_here
+        token: your_token_here
+        aesKey: your_aeskey_here
+  # 小程序配置
+  miniapp:
+    configs:
+      - appid: wxappid123456
+        secret: your_secret_here
+        token: your_token_here
+        aesKey: your_aeskey_here
+  # 微信支付配置
+  pay:
+    appId: wxappid123456
+    mchId: 1234567890
+    mchKey: your_mchkey_here
+    subAppId: ''
+    subMchId: ''
+    keyPath: /path/to/apiclient_cert.p12

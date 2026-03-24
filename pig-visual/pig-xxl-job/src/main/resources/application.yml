@@ -1,0 +1,54 @@
+server:
+  port: 5004
+
+spring:
+  application:
+    name: @artifactId@
+  profiles:
+    active: @profiles.active@
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_HOST:pig-register}:${NACOS_PORT:8848}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
+        shared-configs:
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PWD:root}
+    url: jdbc:mysql://${MYSQL_HOST:pig-mysql}:${MYSQL_PORT:3306}/xxl_job?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true&allowPublicKeyRetrieval=true
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 10
+  freemarker:
+    charset: UTF-8
+    request-context-attribute: request
+    settings:
+      number_format: 0.##########
+    suffix: .ftl
+    template-loader-path: classpath:/templates/
+    resources:
+      cache-period: 0
+
+mybatis:
+  mapper-locations: classpath:/mybatis-mapper/*Mapper.xml
+
+# xxl-job 调度中心配置
+xxl:
+  job:
+    # 调度中心访问令牌（可选）
+    accessToken: default_token
+    # 国际化配置
+    i18n: zh_CN
+    # 触发器线程池大小
+    triggerpool:
+      fast:
+        max: 200
+      slow:
+        max: 100
+    # 日志保留天数
+    logretentiondays: 30

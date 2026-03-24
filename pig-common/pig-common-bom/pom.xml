@@ -114,6 +114,16 @@
 			</dependency>
 			<dependency>
 				<groupId>com.pig4cloud</groupId>
+				<artifactId>pig-common-ijpay</artifactId>
+				<version>${revision}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.pig4cloud</groupId>
+				<artifactId>pig-common-wxjava</artifactId>
+				<version>${revision}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.pig4cloud</groupId>
 				<artifactId>pig-upms-api</artifactId>
 				<version>${revision}</version>
 			</dependency>

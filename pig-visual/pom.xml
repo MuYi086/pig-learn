@@ -34,5 +34,7 @@
         <module>pig-monitor</module>
         <module>pig-quartz</module>
         <module>pig-flowable</module>
+        <module>pig-xxl-job</module>
+        <module>pig-report</module>
     </modules>
 </project>

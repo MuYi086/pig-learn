@@ -44,5 +44,7 @@
         <module>pig-common-xss</module>
         <module>pig-common-excel</module>
         <module>pig-common-druid</module>
+        <module>pig-common-ijpay</module>
+        <module>pig-common-wxjava</module>
     </modules>
 </project>
