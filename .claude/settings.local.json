@@ -2,7 +2,48 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:gitee.com)",
-      "WebSearch"
+      "WebSearch",
+      "Skill(update-config)",
+      "Bash",
+      "Read",
+      "Write",
+      "Edit",
+      "Glob",
+      "Grep",
+      "Agent",
+      "TaskCreate",
+      "TaskUpdate",
+      "TaskGet",
+      "TaskList",
+      "CronCreate",
+      "CronDelete",
+      "CronList",
+      "LSP",
+      "Skill"
+    ],
+    "deny": [
+      "Bash(rm -rf /)",
+      "Bash(rm -rf /*)",
+      "Bash(rm -rf ~)",
+      "Bash(rm -rf ~/.*)",
+      "Bash(> /)",
+      "Bash(dd if=* of=/dev/)",
+      "Bash(mkfs.*)",
+      "Bash(fdisk *)"
+    ],
+    "defaultMode": "acceptEdits"
+  },
+  "hooks": {
+    "TaskCompleted": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd /home/muyi086/github/pig-learn && task_title=$(jq -r '.task_data.subject // \"完成任务\"') && if [ -n \"$(git status --porcelain)\" ]; then git add -A && git commit -m \"${task_title}\" 2>/dev/null || true; fi",
+            "timeout": 30
+          }
+        ]
+      }
     ]
   }
 }
