@@ -24,6 +24,7 @@
 		<excel.version>3.4.2</excel.version>
 		<screw.version>0.0.3</screw.version>
 		<hutool.version>5.8.41</hutool.version>
+		<druid.version>1.2.23</druid.version>
 		<velocity.version>2.4</velocity.version>
 		<captcha.version>2.2.5</captcha.version>
 		<knife4j.version>4.5.0</knife4j.version>
@@ -104,6 +105,11 @@
 			<dependency>
 				<groupId>com.pig4cloud</groupId>
 				<artifactId>pig-common-websocket</artifactId>
+				<version>${revision}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.pig4cloud</groupId>
+				<artifactId>pig-common-druid</artifactId>
 				<version>${revision}</version>
 			</dependency>
 			<dependency>
@@ -228,6 +234,12 @@
 				<version>${hutool.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			<!-- Druid 连接池 -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid-spring-boot-3-starter</artifactId>
+				<version>${druid.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

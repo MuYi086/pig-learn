@@ -1,0 +1,52 @@
+# Druid 连接池配置
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      # 是否启用 Druid
+      enabled: true
+      # 初始化连接数
+      initial-size: 5
+      # 最小连接数
+      min-idle: 5
+      # 最大连接数
+      max-active: 20
+      # 获取连接等待超时时间（毫秒）
+      max-wait: 60000
+      # 检测间隔时间（毫秒）
+      time-between-eviction-runs-millis: 60000
+      # 连接在池中最小生存时间（毫秒）
+      min-evictable-idle-time-millis: 300000
+      # 连接在池中最大生存时间（毫秒）
+      max-evictable-idle-time-millis: 900000
+      # 检测连接是否有效的 SQL
+      validation-query: SELECT 1
+      # 申请连接时检测
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      # 是否开启 PSCache
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      # 过滤器配置（stat:监控统计, wall:防注入, slf4j:日志）
+      filters: stat,wall,slf4j
+      # 合并 SQL
+      merge-sql: true
+      # 慢 SQL 阈值（毫秒）
+      slow-sql-millis: 1000
+      # 是否记录慢 SQL
+      log-slow-sql: true
+      # 监控页面配置
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: admin
+        allow: ''
+        deny: ''
+        reset-enable: false
+      # Web 监控配置
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
